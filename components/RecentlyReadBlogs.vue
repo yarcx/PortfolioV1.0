@@ -1,6 +1,6 @@
 <template lang="">
   <div
-    class="md:w-[25%] z-10 h-full border-l border-solid border-[color:var(--lightThemBorderColor)] dark:border-[color:var(--darkThemeBorderColor)] hidden md:flex flex-col items-stretch"
+    class="md:w-[25%] z-4 h-full border-l border-solid border-[color:var(--lightThemBorderColor)] dark:border-[color:var(--darkThemeBorderColor)] hidden md:flex flex-col items-stretch"
   >
     <!-- Header search bar section starts here -->
     <div

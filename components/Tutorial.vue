@@ -50,7 +50,7 @@
               class="-mt-12 md:-mt-16 z-10 border-4 border-[color:var(--darkThemeTextColor)] dark:border-[color:var(--lightThemeTextColor)] rounded-full w-[6rem] h-[6rem] md:w-36 md:h-36"
             >
               <img
-                class="object-cover z-20 w-[100%] hover:opacity-[0.98] cursor-pointer h-[100%] md:w-full md:h-full bg-center bg-no-repeat bg-contain rounded-full"
+                class="object-cover z-15 w-[100%] hover:opacity-[0.98] cursor-pointer h-[100%] md:w-full md:h-full bg-center bg-no-repeat bg-contain rounded-full"
                 src="../static/bigProfilePicture.jpg"
                 alt="profile Picture"
               />
@@ -67,13 +67,13 @@
             </div>
           </div>
 
+          <NuxtLink to=/contactMe>
           <button
             class="hover:bg-gray-100 dark:hover:bg-gray-900 transition h-8 border-[color:var(--lightThemBorderColor)] border border-solid dark:border-[color:var(--darkThemeBorderColor)] rounded-2xl px-4"
           >
-          <NuxtLink to=/contactMe>
             Contact Me
-          </NuxtLink>
           </button>
+          </NuxtLink>
           <!-- The location and dates section -->
         </div>
 
@@ -148,8 +148,8 @@
         <div
           class="h-auto min-h-[50px] font-light text-sm hidden md:flex justify-end items-center px-4 text-[color:var(--lightThemeTextColor)] dark:text-[color:var(--darkThemeTextColor)]"
         >
-          <span class="cursor-pointer hover:underline"
-            >Check out Guest Book</span
+          <NuxtLink to="/guestbook" class="cursor-pointer hover:underline"
+            >Check out Guest Book</NuxtLink
           >
           <ArrowRightThin class="pl-2 text-sm" />
         </div>

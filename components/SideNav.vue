@@ -19,21 +19,24 @@
             <li
               v-for="(sideNav, index) in sideNavLinks"
               :key="index"
-              class="flex items-center justify-start transition cursor-pointer group"
+              class="flex text-[color:var(--lightThemeTextColor)] dark:text-[color:var(--darkThemeTextColor)] items-center justify-start transition cursor-pointer group"
             >
               <NuxtLink
                 :to="sideNav.link"
-                class="text-[color:var(--lightThemeTextColor)] dark:text-[color:var(--darkThemeTextColor)] group-hover:rounded-full flex justify-start p-3 items-center group-hover:bg-gray-100 dark:group-hover:bg-gray-900 w-max"
+                class="flex items-center justify-start p-3 group-hover:rounded-full group-hover:bg-gray-100 dark:group-hover:bg-gray-900 w-max"
               >
-                <component
-                  class="text-[color:var(--lightThemeTextColor)] dark:text-[color:var(--darkThemeTextColor)]"
-                  :is="sideNav.icon"
-                ></component>
+                <component class="" :is="sideNav.icon"></component>
                 <span class="mx-3 hidden sm:flex font-[200] text-[20px]">{{
                   sideNav.text
                 }}</span>
               </NuxtLink>
             </li>
+            <button
+              @click="toggleSettingsModal()"
+              class="w-[90%] mt-2 p-4 bg-[color:var(--BlueThemeColor)] rounded-full text-[color:var(--darkThemeTextColor)]"
+            >
+              Display Settings
+            </button>
           </ul>
         </div>
       </div>
@@ -74,7 +77,7 @@ import ClipboardListOutline from 'vue-material-design-icons/ClipboardListOutline
 import AccountOutline from 'vue-material-design-icons/AccountOutline.vue'
 import LanConnect from 'vue-material-design-icons/LanConnect.vue'
 import BookAccountOutline from 'vue-material-design-icons/BookAccountOutline.vue'
-
+import { mapGetters, mapMutations } from 'vuex'
 export default {
   name: 'SideNav',
   data() {
@@ -107,6 +110,7 @@ export default {
     showEle(e) {
       console.log(document.getElementById('iconsOnce'), e)
     },
+    ...mapMutations(['toggleSettingsModal']),
   },
 }
 </script>

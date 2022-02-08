@@ -1,12 +1,13 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import vue from 'vue'
+import vuex from 'vuex'
 
-Vue.use(Vuex)
+vue.use(vuex)
 
-export const store = new Vuex.Store({
+export const store = new vuex.Store({
   state: {
     count: 0,
     toggled: false,
+    openSettingsModal: false,
   },
 
   getters: {
@@ -15,6 +16,10 @@ export const store = new Vuex.Store({
     },
     toggled: (state) => {
       return state.toggled
+    },
+    getSettingsModal: (state) => {
+      console.log(state, ' from the modal settings')
+      return state.openSettingsModal
     },
   },
   mutations: {
@@ -37,6 +42,13 @@ export const store = new Vuex.Store({
         document.documentElement.classList.add('dark')
         state.toggled = true
       }
+    },
+    toggleSettingsModal(state, status) {
+      console.log(state, status, 'this got fired')
+      if (status) {
+        state.openSettingsModal = status
+      }
+      state.openSettingsModal = !state.openSettingsModal
     },
   },
 })

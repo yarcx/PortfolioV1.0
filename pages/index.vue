@@ -1,39 +1,47 @@
 <template>
-  <div
-    class="w-100% bg-[color:var(--darkThemeTextColor)] dark:bg-[color:var(--lightThemeTextColor)]"
-  >
+  <div>
     <div
-      class="max-w-[1440px] bg-[color:var(--darkThemeTextColor)] dark:bg-[color:var(--lightThemeTextColor)] flex overflow-hidden overscroll-y-none justify-center mx-auto h-screen items-stretch flex-shrink-0"
+      class="w-100% bg-[color:var(--darkThemeTextColor)] dark:bg-[color:var(--lightThemeTextColor)]"
     >
-      <SideNav />
-      <Tutorial />
-      <RecentlyReadBlog />
+      <div
+        class="max-w-[1440px] bg-[color:var(--darkThemeTextColor)] dark:bg-[color:var(--lightThemeTextColor)] flex overflow-hidden overscroll-y-none justify-center mx-auto h-screen items-stretch flex-shrink-0"
+      >
+        <SideNav />
+        <Tutorial />
+        <RecentlyReadBlog />
+      </div>
     </div>
+    <Modal />
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import vue from 'vue'
 import { store } from '../store/index'
 import { mapGetters } from 'vuex'
 import SideNav from '../components/SideNav.vue'
 import RecentlyReadBlog from '../components/RecentlyReadBlogs.vue'
+import Modal from '../components/Modal/Modal.vue'
 
-export default Vue.extend({
+export default vue.extend({
   name: 'IndexPage',
   store: store,
   components: {
     SideNav,
     RecentlyReadBlog,
+    Modal,
   },
   data() {
-    return {}
+    return {
+      openModal: false,
+    }
   },
   computed: {
     // mix the getters into computed with object spread operator
     ...mapGetters([
       'count',
       'toggled',
+      'getSettingsModal',
       // ...
     ]),
   },
@@ -59,6 +67,9 @@ export default Vue.extend({
   --smallLinksLightColor: #536471;
 
   --blogLightThemeBg: rgb(247, 249, 249);
+
+  --modalDarkBgColor: rgba(91, 112, 131, 0.4);
+  --modalLightBgColor: rgba(0, 0, 0, 0.4);
 }
 
 * {
