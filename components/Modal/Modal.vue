@@ -2,24 +2,24 @@
   <div
     v-if="this.getSettingsModal"
     @click="toggleSettingsModal()"
-    class="h-[100vh] grid place-items-center z-20 bg-[color:var(--modalLightBgColor)] transition dark:bg-[color:var(--modalDarkBgColor)] fixed inset-0 cursor-pointer left-0 w-[100vw]"
+    class="h-[100vh] flex justify-center items-center z-20 bg-[color:var(--modalLightBgColor)] transition dark:bg-[color:var(--modalDarkBgColor)] fixed inset-0 cursor-pointer left-0 w-[100vw]"
     :class="{}"
   >
     <div
       @click="toggleSettingsModal(true)"
-      class="h-[88vh] text-[color:var(--lightThemeTextColor)] dark:text-[color:var(--darkThemeTextColor)] p-4 md:w-[45%] overscroll-y-auto bg-[color:var(--darkThemeTextColor)] dark:bg-[color:var(--lightThemeTextColor)] rounded-xl"
+      class="h-[90vh] text-[color:var(--lightThemeTextColor)] mx-auto dark:text-[color:var(--darkThemeTextColor)] p-4 w-[96%] md:w-[45%] overflow-y-auto bg-[color:var(--darkThemeTextColor)] dark:bg-[color:var(--lightThemeTextColor)] rounded-xl"
     >
       <h2 class="mt-4 text-xl text-center">Customize your view</h2>
 
       <p
-        class="w-[90%] mx-auto text-center mt-3 text-[color:var(--smallLinksLightColor)] font-light text-md dark:text-[color:var(--smallLinksDarkColor)]"
+        class="w-[95%] md:w-[90%] mx-auto text-center mt-3 text-[color:var(--smallLinksLightColor)] font-light text-md dark:text-[color:var(--smallLinksDarkColor)]"
       >
         Manage your font size, color, and background. These settings affect all
         this portfolios' Tab on this browser.
       </p>
 
       <div
-        class="w-[75%] p-3 flex border rounded-xl border-[color:var(--lightThemBorderColor)] dark:border-[color:var(--darkThemeBorderColor)] mt-8 h-auto mx-auto"
+        class="w-[85%] md:w-[75%] p-3 flex border rounded-xl border-[color:var(--lightThemBorderColor)] dark:border-[color:var(--darkThemeBorderColor)] mt-4 h-auto mx-auto"
       >
         <div class="flex items-baseline justify-end w-[16%] h-full">
           <img
@@ -57,11 +57,20 @@
           Font Size
         </h3>
         <div
-          class="flex items-center justify-between w-full h-12 p-2 bg-gray-500 rounded-xl"
+          class="flex items-baseline justify-between w-full h-12 p-3 bg-[color:var(--modalSettingsContentLight)] dark:bg-[color:var(--modalSettingsContentDark)] rounded-xl"
         >
-          <span>Aa</span>
+          <span class="text-xs">Aa</span>
+          <div
+            style="
+               {
+                background: 'red';
+              }
+            "
+            class="w-[90%] h-2 flex relative bg-white lineLeft"
+          ></div>
           <div>helo</div>
-          <span>Aa</span>
+          <div class="w-full h-2 bg-white"></div>
+          <span class="text-md">Aa</span>
         </div>
       </div>
 
@@ -73,46 +82,74 @@
           Color
         </h3>
         <div
-          class="flex items-center justify-around w-full h-12 p-2 bg-gray-500 rounded-xl"
+          class="flex items-center justify-around w-full h-12 p-3 bg-[color:var(--modalSettingsContentLight)] dark:bg-[color:var(--modalSettingsContentDark)] rounded-xl"
         >
-          <div class="w-8 h-8 bg-pink-500 rounded-full"></div>
-          <div class="w-8 h-8 bg-yellow-500 rounded-full"></div>
-          <div class="w-8 h-8 bg-green-500 rounded-full"></div>
+          <div class="bg-pink-500 rounded-full w-9 h-9"></div>
+          <div class="bg-yellow-500 rounded-full w-9 h-9"></div>
+          <div class="bg-green-500 rounded-full w-9 h-9"></div>
         </div>
       </div>
       <!-- FIXME: section to customize the BackgroundColor -->
       <div class="w-[85%] mt-2 mx-auto">
-        <form>
-          <h3
-            class="text-[0.9rem] inline-block font-bold text-[color:var(--smallLinksLightColor)] dark:text-[color:var(--smallLinksDarkColor)]"
-          >
-            Background
-          </h3>
+        <h3
+          class="text-[0.9rem] inline-block font-bold text-[color:var(--smallLinksLightColor)] dark:text-[color:var(--smallLinksDarkColor)]"
+        >
+          Background
+        </h3>
+        <div
+          class="flex items-center flex-wrap justify-around w-full p-3 bg-[color:var(--modalSettingsContentLight)] dark:bg-[color:var(--modalSettingsContentDark)] rounded-xl"
+        >
           <div
-            class="flex items-center justify-around w-full h-12 p-2 bg-gray-500 rounded-xl"
+            @click.stop="
+              {
+                toggleLightMode()
+              }
+            "
+            class="w-[100%] md:w-[8rem] my-1 md:my-0 flex justify-around items-center text-black p-3 bg-white rounded-md"
           >
-            <button
-              class="w-[8rem] flex justify-around items-center text-black h-8 p-2 bg-white rounded-md"
+            <div
+              class="w-[20%] active:ring-1 h-full flex justify-center items-center"
             >
-              <input type="radio" /> <span>Default</span>
-            </button>
-            <button
-              class="w-[8rem] justify-around items-center flex p-2 h-8 bg-blue-200 rounded-md"
-            >
-              <input type="radio" /> <span>Dim</span>
-            </button>
-            <button
-              class="w-[8rem] flex text-white justify-around items-center p-2 h-8 bg-[color:var(--lightThemeTextColor)] rounded-md"
-            >
-              <input type="checkbox" /> <span>Lights Out</span>
-            </button>
+              <input type="radio" />
+            </div>
+            <div class="w-[80%] h-full flex justify-center items-center">
+              <span>Default</span>
+            </div>
           </div>
-          <div class="flex items-center justify-center mt-6">
-            <button class="px-3 py-1 text-white bg-blue-600 rounded-full w-min">
-              Done
-            </button>
+          <div
+            @click.stop="
+              {
+                toggleLightMode('dim')
+              }
+            "
+            class="w-[100%] md:w-[8rem] my-1 md:my-0 justify-around items-center flex p-3 bg-blue-200 rounded-md"
+          >
+            <div class="w-[20%] h-full flex justify-center items-center">
+              <input type="radio" />
+            </div>
+            <div class="w-[80%] h-full flex justify-center items-center">
+              <span>Dim</span>
+            </div>
           </div>
-        </form>
+          <div
+            class="w-[100%] md:w-[8rem] my-1 md:my-0 flex text-white justify-around items-center p-3 bg-[color:var(--lightThemeTextColor)] rounded-md"
+          >
+            <div class="w-[20%] h-full flex justify-center items-center">
+              <input type="radio" />
+            </div>
+            <div class="w-[80%] h-full flex justify-center items-center">
+              <span>Lights Out</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex items-center justify-center mt-6">
+          <button
+            @click.stop="toggleSettingsModal(false)"
+            class="px-3 py-1 text-white bg-[color:var(--BlueThemeColor)] hover:opacity-90 transition-colors rounded-full w-min"
+          >
+            Done
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -129,8 +166,19 @@ export default {
     ...mapGetters(['getSettingsModal']),
   },
   methods: {
-    ...mapMutations(['toggleSettingsModal']),
+    ...mapMutations(['toggleSettingsModal', 'toggleLightMode']),
   },
 }
 </script>
-<style lang=""></style>
+
+<style>
+.lineLeft::before {
+  content: ' ';
+  font-size: 1rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+}
+</style>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="w-100% bg-[color:var(--darkThemeTextColor)] dark:bg-[color:var(--lightThemeTextColor)]"
+      class="w-100% box-border bg-[color:var(--darkThemeTextColor)] dark:bg-[color:var(--lightThemeTextColor)] dim:bg-red-900"
     >
       <div
         class="max-w-[1440px] bg-[color:var(--darkThemeTextColor)] dark:bg-[color:var(--lightThemeTextColor)] flex overflow-hidden overscroll-y-none justify-center mx-auto h-screen items-stretch flex-shrink-0"
@@ -70,6 +70,9 @@ export default vue.extend({
 
   --modalDarkBgColor: rgba(91, 112, 131, 0.4);
   --modalLightBgColor: rgba(0, 0, 0, 0.4);
+
+  --modalSettingsContentDark: rgb(21, 24, 28);
+  --modalSettingsContentLight: rgb(247, 249, 249);
 }
 
 * {

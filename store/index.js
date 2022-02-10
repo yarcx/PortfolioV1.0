@@ -26,15 +26,28 @@ export const store = new vuex.Store({
     increment(state, payload) {
       state.count += payload.amount
     },
-    toggleLightMode(state) {
-      state.toggled = !state.toggled
-      document.documentElement.classList.toggle('dark')
-      if (document.documentElement.classList.length) {
-        localStorage.setItem('theme', 'dark')
-        state.toggled = true
+    toggleLightMode(state, ligthMode) {
+      if (!ligthMode) {
+        state.toggled = !state.toggled
+        document.documentElement.classList.toggle('dark')
+        if (document.documentElement.classList.length) {
+          localStorage.setItem('theme', 'dark')
+          state.toggled = true
+        } else {
+          localStorage.removeItem('theme')
+          state.toggled = false
+        }
       } else {
-        localStorage.removeItem('theme')
-        state.toggled = false
+        console.log(ligthMode, 'the lightmode passed in')
+        state.toggled = !state.toggled
+        document.documentElement.classList.remove(
+          document.documentElement.classList[0]
+        )
+        document.documentElement.classList.toggle(ligthMode)
+        if (document.documentElement.classList.length) {
+          localStorage.setItem('theme', ligthMode)
+          state.toggled = true
+        }
       }
     },
     checkLightState(state) {
