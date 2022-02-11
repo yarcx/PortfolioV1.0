@@ -1,9 +1,8 @@
 <template>
   <div
     v-if="this.getSettingsModal"
-    @click="toggleSettingsModal()"
+    @click.stop="toggleSettingsModal()"
     class="h-[100vh] flex justify-center items-center z-20 bg-[color:var(--modalLightBgColor)] transition dark:bg-[color:var(--modalDarkBgColor)] fixed inset-0 cursor-pointer left-0 w-[100vw]"
-    :class="{}"
   >
     <div
       @click="toggleSettingsModal(true)"
@@ -116,22 +115,13 @@
               <span>Default</span>
             </div>
           </div>
+
           <div
             @click.stop="
               {
-                toggleLightMode('dim')
+                toggleLightMode('dark')
               }
             "
-            class="w-[100%] md:w-[8rem] my-1 md:my-0 justify-around items-center flex p-3 bg-blue-200 rounded-md"
-          >
-            <div class="w-[20%] h-full flex justify-center items-center">
-              <input type="radio" />
-            </div>
-            <div class="w-[80%] h-full flex justify-center items-center">
-              <span>Dim</span>
-            </div>
-          </div>
-          <div
             class="w-[100%] md:w-[8rem] my-1 md:my-0 flex text-white justify-around items-center p-3 bg-[color:var(--lightThemeTextColor)] rounded-md"
           >
             <div class="w-[20%] h-full flex justify-center items-center">

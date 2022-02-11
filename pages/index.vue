@@ -50,6 +50,7 @@ export default vue.extend({
 
   mounted() {
     this.$store.commit('checkLightState')
+    console.log(this.$route.name)
   },
 })
 </script>
@@ -76,7 +77,8 @@ export default vue.extend({
 }
 
 * {
-  font-family: 'IBM Plex Sans', sans-serif, Neonderthaw, Island Moments, cursive;
+  font-family: 'IBM Plex Sans', Neonderthaw, Lobster, sans-serif, Island Moments,
+    cursive;
   box-sizing: border-box;
   transition: color 200ms ease-in, background-color 150ms ease-out;
 }

@@ -2,10 +2,14 @@
 <template>
   <main class="md:w-[55%] relative w-full overflow-hidden">
     <header
-      class="w-full flex bg-[color:var(--darkThemeTextColor)] dark:bg-[color:var(--lightThemeTextColor)] h-12"
+      class="w-full border-[color:var(--lightThemBorderColor)] border-b md:border border-solid dark:border-[color:var(--darkThemeBorderColor)] flex bg-[color:var(--darkThemeTextColor)] dark:bg-[color:var(--lightThemeTextColor)] h-12"
     >
       <nav class="flex-1 p-2">
-        <div class="flex items-center justify-between px-2">
+        <div class="flex items-center justify-between px-2 ">
+          <div class="flex items-center justify-start">
+          <div class="mr-5 transition rounded-full  hover:bg-gray-100 dark:hover:bg-gray-600">
+            <img src="../static/mobileNavImage.jpg" alt="mobile Nav opener icon" class="h-7 w-7 rounded-full object-contain" />
+          </div>
           <NuxtLink to="/">
             <h1
               class="text-[color:var(--lightThemeTextColor)] dark:text-[color:var(--darkThemeTextColor)] text-[20px]"
@@ -13,6 +17,7 @@
               Home
             </h1></NuxtLink
           >
+          </div>
           <div
             class="p-1 transition rounded-full w-min h-min hover:bg-gray-100 dark:hover:bg-gray-600"
           >

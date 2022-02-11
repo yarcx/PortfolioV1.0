@@ -23,12 +23,14 @@
             >
               <NuxtLink
                 :to="sideNav.link"
-                class="flex items-center justify-start p-3 group-hover:rounded-full group-hover:bg-gray-100 dark:group-hover:bg-gray-900 w-max"
+                class="flex items-center justify-start p-3 group-hover:rounded-full group-hover:bg-gray-100 dark:group-hover:bg-gray-900 w-max font"
               >
                 <component class="" :is="sideNav.icon"></component>
-                <span class="mx-3 hidden sm:flex font-[200] text-[20px]">{{
-                  sideNav.text
-                }}</span>
+                <span
+                  class="mx-3 hidden sm:flex font-[200] text-[20px]"
+                  :class="[$route.name === sideNav.name && 'font-bold']"
+                  >{{ sideNav.text }}</span
+                >
               </NuxtLink>
             </li>
             <button
@@ -88,16 +90,38 @@ export default {
           text: 'Home',
           icon: Home,
           link: '/',
+          name: 'index',
         },
         {
           text: 'GuestBook',
           icon: ClipboardListOutline,
           link: '/guestbook',
+          name: 'guestbook',
         },
-        { text: 'Resume', icon: AccountOutline, link: '/resume' },
-        { text: 'Projects', icon: LanConnect, link: '/projects' },
-        { text: 'Blog', icon: BookAccountOutline, link: '/blogs' },
-        { text: 'Contact Me', icon: EmailOutline, link: '/contactMe' },
+        {
+          text: 'Resume',
+          icon: AccountOutline,
+          link: '/resume',
+          name: 'resume',
+        },
+        {
+          text: 'Projects',
+          icon: LanConnect,
+          link: '/projects',
+          name: 'projects',
+        },
+        {
+          text: 'Blog',
+          icon: BookAccountOutline,
+          link: '/blogs',
+          name: 'blogs',
+        },
+        {
+          text: 'Contact Me',
+          icon: EmailOutline,
+          link: '/contactMe',
+          name: 'contactMe',
+        },
       ],
     }
   },
@@ -107,14 +131,13 @@ export default {
     div.setAttribute('v-html', '<h1>hello</h1>')
   },
   methods: {
-    showEle(e) {
-      console.log(document.getElementById('iconsOnce'), e)
-    },
+    showEle(e) {},
     ...mapMutations(['toggleSettingsModal']),
   },
 }
 </script>
 <style>
+/* @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;300;500&family=Island+Moments&family=Lobster&family=Neonderthaw&display=swap'); */
 .logo {
   font-family: 'Lobster', Neonderthaw, IBM Plex Sans, sans-serif, cursive;
   font-weight: 500;

@@ -9,7 +9,6 @@ export const store = new vuex.Store({
     toggled: false,
     openSettingsModal: false,
   },
-
   getters: {
     getCount: (state) => {
       return state.count
@@ -27,6 +26,7 @@ export const store = new vuex.Store({
       state.count += payload.amount
     },
     toggleLightMode(state, ligthMode) {
+      console.log('this is toggle ')
       if (!ligthMode) {
         state.toggled = !state.toggled
         document.documentElement.classList.toggle('dark')
@@ -38,7 +38,6 @@ export const store = new vuex.Store({
           state.toggled = false
         }
       } else {
-        console.log(ligthMode, 'the lightmode passed in')
         state.toggled = !state.toggled
         document.documentElement.classList.remove(
           document.documentElement.classList[0]

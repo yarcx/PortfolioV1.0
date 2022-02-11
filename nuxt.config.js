@@ -15,6 +15,14 @@ export default {
       { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [{ rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
+    link: [{ rel: 'preconnect', href: 'https://fonts.gstatic.com' }],
+    link: [
+      {
+        href: 'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;300;500&family=Island+Moments&family=Lobster&family=Neonderthaw&display=swap',
+        rel: 'stylesheet',
+      },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
