@@ -8,8 +8,10 @@ export const store = new vuex.Store({
     count: 0,
     toggled: false,
     openSettingsModal: false,
+    mobileSideNav: false,
   },
   getters: {
+    getMobileSideNav: (state) => state.mobileSideNav,
     getCount: (state) => {
       return state.count
     },
@@ -17,16 +19,17 @@ export const store = new vuex.Store({
       return state.toggled
     },
     getSettingsModal: (state) => {
-      console.log(state, ' from the modal settings')
       return state.openSettingsModal
     },
   },
   mutations: {
+    changeMobileSideNav(state, payload) {
+      state.mobileSideNav = payload
+    },
     increment(state, payload) {
       state.count += payload.amount
     },
     toggleLightMode(state, ligthMode) {
-      console.log('this is toggle ')
       if (!ligthMode) {
         state.toggled = !state.toggled
         document.documentElement.classList.toggle('dark')
@@ -56,7 +59,6 @@ export const store = new vuex.Store({
       }
     },
     toggleSettingsModal(state, status) {
-      console.log(state, status, 'this got fired')
       if (status) {
         state.openSettingsModal = status
       }

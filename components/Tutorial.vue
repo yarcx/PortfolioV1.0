@@ -1,13 +1,13 @@
 <!-- Please remove this file from your project -->
 <template>
   <main class="md:w-[55%] relative w-full overflow-hidden">
-    <header
-      class="w-full border-[color:var(--lightThemBorderColor)] border-b md:border border-solid dark:border-[color:var(--darkThemeBorderColor)] flex bg-[color:var(--darkThemeTextColor)] dark:bg-[color:var(--lightThemeTextColor)] h-12"
+    <header 
+      class="w-full border-[color:var(--lightThemBorderColor)] border-b md:border-0 border-solid dark:border-[color:var(--darkThemeBorderColor)] flex bg-[color:var(--darkThemeTextColor)] dark:bg-[color:var(--lightThemeTextColor)] md:h-12"
     >
       <nav class="flex-1 p-2">
         <div class="flex items-center justify-between px-2 ">
           <div class="flex items-center justify-start">
-          <div class="mr-5 transition rounded-full  hover:bg-gray-100 dark:hover:bg-gray-600">
+          <div @click="openMobileNav" class="mr-5 profileImg md:hidden transition rounded-full  hover:bg-gray-100 dark:hover:bg-gray-600" >
             <img src="../static/mobileNavImage.jpg" alt="mobile Nav opener icon" class="h-7 w-7 rounded-full object-contain" />
           </div>
           <NuxtLink to="/">
@@ -173,6 +173,7 @@
       <div><LanConnect /></div>
       <div><EmailOutline /></div>
     </footer>
+    <MobileNav />
   </main>
 </template>
 
@@ -194,8 +195,9 @@ import Phone from 'vue-material-design-icons/Phone.vue'
 import AccountOutline from 'vue-material-design-icons/AccountOutline.vue'
 import LanConnect from 'vue-material-design-icons/LanConnect.vue'
 import EmailOutline from 'vue-material-design-icons/EmailOutline.vue'
+import MobileNav from './MobileNav/MobileNav.vue'
 
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 export default {
   name: 'NuxtTutorial',
   data() {
@@ -224,7 +226,16 @@ export default {
       ],
     }
   },
+  
   methods: {
+    ...mapMutations(['changeMobileSideNav']),
+    checkThis(e){
+      console.log('this got cluck')
+      e.target.classList.contains('profileImg') && this.openMobileNav(e)
+    },
+    openMobileNav(e){
+      this.changeMobileSideNav(true)
+    },
     toggleLightMode() {
       this.$store.commit('toggleLightMode')
     },
@@ -262,6 +273,7 @@ export default {
     ArrowRightThin,
     Twitter,
     Phone,
+    MobileNav
   },
   computed: {
     // mix the getters into computed with object spread operator
