@@ -17,20 +17,19 @@
         <div class="py-2">
           <ul class="">
             <li
-              v-for="(sideNav, index) in sideNavLinks"
+              v-for="(sideNav, index) in getSideNavLinks"
               :key="index"
               class="flex text-[color:var(--lightThemeTextColor)] dark:text-[color:var(--darkThemeTextColor)] items-center justify-start transition cursor-pointer group"
+              :class="[$route.name === sideNav.name && 'font-bold']"
             >
               <NuxtLink
                 :to="sideNav.link"
                 class="flex items-center justify-start p-3 group-hover:rounded-full group-hover:bg-gray-100 dark:group-hover:bg-gray-900 w-max font"
               >
                 <component class="" :is="sideNav.icon"></component>
-                <span
-                  class="mx-3 hidden sm:flex font-[200] text-[20px]"
-                  :class="[$route.name === sideNav.name && 'font-bold']"
-                  >{{ sideNav.text }}</span
-                >
+                <span class="mx-3 hidden sm:flex font-[200] text-[20px]">{{
+                  sideNav.text
+                }}</span>
               </NuxtLink>
             </li>
             <button
@@ -80,49 +79,51 @@ import AccountOutline from 'vue-material-design-icons/AccountOutline.vue'
 import LanConnect from 'vue-material-design-icons/LanConnect.vue'
 import BookAccountOutline from 'vue-material-design-icons/BookAccountOutline.vue'
 import { mapGetters, mapMutations } from 'vuex'
+import store from '../store/index'
 export default {
   name: 'SideNav',
+  store,
   data() {
     return {
       logo: 'GoodVibesOnly',
-      sideNavLinks: [
-        {
-          text: 'Home',
-          icon: Home,
-          link: '/',
-          name: 'index',
-        },
-        {
-          text: 'GuestBook',
-          icon: ClipboardListOutline,
-          link: '/guestbook',
-          name: 'guestbook',
-        },
-        {
-          text: 'Resume',
-          icon: AccountOutline,
-          link: '/resume',
-          name: 'resume',
-        },
-        {
-          text: 'Projects',
-          icon: LanConnect,
-          link: '/projects',
-          name: 'projects',
-        },
-        {
-          text: 'Blog',
-          icon: BookAccountOutline,
-          link: '/blogs',
-          name: 'blogs',
-        },
-        {
-          text: 'Contact Me',
-          icon: EmailOutline,
-          link: '/contactMe',
-          name: 'contactMe',
-        },
-      ],
+      // sideNavLinks: [
+      //   {
+      //     text: 'Home',
+      //     icon: Home,
+      //     link: '/',
+      //     name: 'index',
+      //   },
+      //   {
+      //     text: 'GuestBook',
+      //     icon: ClipboardListOutline,
+      //     link: '/guestbook',
+      //     name: 'guestbook',
+      //   },
+      //   {
+      //     text: 'Resume',
+      //     icon: AccountOutline,
+      //     link: '/resume',
+      //     name: 'resume',
+      //   },
+      //   {
+      //     text: 'Projects',
+      //     icon: LanConnect,
+      //     link: '/projects',
+      //     name: 'projects',
+      //   },
+      //   {
+      //     text: 'Blog',
+      //     icon: BookAccountOutline,
+      //     link: '/blogs',
+      //     name: 'blogs',
+      //   },
+      //   {
+      //     text: 'Contact Me',
+      //     icon: EmailOutline,
+      //     link: '/contactMe',
+      //     name: 'contactMe',
+      //   },
+      // ],
     }
   },
   components: { MenuIcon, Home, Pound, BellOutline },
@@ -133,6 +134,9 @@ export default {
   methods: {
     showEle(e) {},
     ...mapMutations(['toggleSettingsModal']),
+  },
+  computed: {
+    ...mapGetters(['getSideNavLinks']),
   },
 }
 </script>
