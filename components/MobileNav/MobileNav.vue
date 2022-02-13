@@ -1,9 +1,9 @@
 <template>
-  <Transition>
+  <Transition name="slide-fade">
     <nav
       v-if="getMobileSideNav"
       @click.stop="changeMobileSideNav(false)"
-      class="h-[100vh] text-[color:var(--lightThemeTextColor)] dark:text-[color:var(--darkThemeTextColor)] md:hidden flex justify-start items-center z-20 bg-[color:var(--modalLightBgColor)] transition dark:bg-[color:var(--modalDarkBgColor)] fixed inset-0 cursor-pointer left-0 w-[100vw]"
+      class="h-[100vh] text-[color:var(--lightThemeTextColor)] dark:text-[color:var(--darkThemeTextColor)] md:hidden flex justify-start items-center z-20 bg-[color:var(--modalLightBgColor)] dark:bg-[color:var(--modalDarkBgColor)] inset-0 fixed cursor-pointer w-[100vw]"
     >
       <div
         @click.stop="changeMobileSideNav(true)"
@@ -36,8 +36,10 @@
             <li
               v-for="(sideNav, index) in getSideNavLinks"
               :key="index"
-              :class="[$route.name === sideNav.name && 'font-bold']"
-              class="flex font-light text-[color:var(--lightThemeTextColor)] dark:text-[color:var(--darkThemeTextColor)] items-center justify-start transition cursor-pointer group"
+              class="flex text-[color:var(--lightThemeTextColor)] dark:text-[color:var(--darkThemeTextColor)] items-center justify-start transition cursor-pointer group"
+              :class="[
+                $route.name === sideNav.name ? 'font-bold' : 'font-light ',
+              ]"
             >
               <NuxtLink
                 :to="sideNav.link"
@@ -48,15 +50,14 @@
                 <span class="mx-3 text-[17px]">{{ sideNav.text }}</span>
               </NuxtLink>
             </li>
-            <!-- <button
-              @click="toggleSettingsModal()"
+            <button
+              @click="openSettingsModal(false)"
               class="w-[90%] mt-2 p-4 bg-[color:var(--BlueThemeColor)] rounded-full text-[color:var(--darkThemeTextColor)]"
             >
               Display Settings
-            </button> -->
+            </button>
           </ul>
         </div>
-        This is the mobile nav of this page
       </div>
     </nav>
   </Transition>
@@ -73,21 +74,29 @@ export default {
     ...mapGetters(['getMobileSideNav', 'getSideNavLinks']),
   },
   methods: {
-    ...mapMutations(['changeMobileSideNav']),
+    ...mapMutations(['changeMobileSideNav', 'toggleSettingsModal']),
+    openSettingsModal(stats) {
+      this.toggleSettingsModal()
+      this.changeMobileSideNav(false)
+    },
   },
 }
 </script>
 <style>
 /* we will explain what these classes do next! */
-.v-enter-active,
-.v-leave-active {
-  transition: position 4s linear opacity 2s ease;
-  left: 0;
+.slide-fade-enter-active {
+  transition: all 0.4s ease-in-out;
+  transform: translateX(0vw);
 }
 
-.v-enter-from,
-.v-leave-to {
+.slide-fade-leave-active {
+  transition: all 0.4s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(-100%);
   opacity: 0;
-  left: -100%;
+  /* left: -10vw; */
 }
 </style>

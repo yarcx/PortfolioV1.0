@@ -134,7 +134,12 @@
         </div>
         <div class="flex items-center justify-center mt-6">
           <button
-            @click.stop="toggleSettingsModal(false)"
+            @click.stop="
+              () => {
+                changeMobileSideNav(false)
+                toggleSettingsModal(false)
+              }
+            "
             class="px-3 py-1 text-white bg-[color:var(--BlueThemeColor)] hover:opacity-90 transition-colors rounded-full w-min"
           >
             Done
@@ -156,7 +161,11 @@ export default {
     ...mapGetters(['getSettingsModal']),
   },
   methods: {
-    ...mapMutations(['toggleSettingsModal', 'toggleLightMode']),
+    ...mapMutations([
+      'toggleSettingsModal',
+      'toggleLightMode',
+      'changeMobileSideNav',
+    ]),
   },
 }
 </script>

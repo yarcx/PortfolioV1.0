@@ -72,7 +72,11 @@ export const store = new vuex.Store({
   },
   mutations: {
     changeMobileSideNav(state, payload) {
-      state.mobileSideNav = payload
+      console.log('you should close', false)
+      if (payload != undefined) {
+        return (state.mobileSideNav = payload)
+      }
+      state.mobileSideNav = !state.mobileSideNav
     },
     increment(state, payload) {
       state.count += payload.amount
