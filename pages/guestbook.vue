@@ -87,12 +87,13 @@ export default {
   },
   mounted() {
     console.log(this.$route, this.$store, this.toggled, 'componenet is mounted')
+    this.changeMobileSideNav()
   },
   methods: {
     clickme(e) {
       console.log(e)
     },
-    // ...mapMutations(['toggleLightMode']),
+    ...mapMutations(['changeMobileSideNav']),
     toggleLightMode() {
       this.$store.commit('toggleLightMode')
     },

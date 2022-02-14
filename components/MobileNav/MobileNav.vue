@@ -6,7 +6,11 @@
       class="h-[100vh] text-[color:var(--lightThemeTextColor)] dark:text-[color:var(--darkThemeTextColor)] md:hidden flex justify-start items-center z-20 bg-[color:var(--modalLightBgColor)] dark:bg-[color:var(--modalDarkBgColor)] inset-0 fixed cursor-pointer w-[100vw]"
     >
       <div
-        @click.stop="changeMobileSideNav(true)"
+        @click.stop="
+          () => {
+            changeMobileSideNav(true)
+          }
+        "
         class="w-[65%] md:hidden h-[100vh] p-3 overflow-y-auto bg-[color:var(--darkThemeTextColor)] dark:bg-[color:var(--lightThemeTextColor)]"
       >
         <header class="mb-5">
@@ -43,7 +47,7 @@
             >
               <NuxtLink
                 :to="sideNav.link"
-                @click.stop="changeMobileSideNav(false)"
+                @click.stop="clickedALink"
                 class="flex items-center justify-start py-3 group-hover:underline group-hover:text-underline w-max font"
               >
                 <component class="" :is="sideNav.icon"></component>
@@ -77,7 +81,13 @@ export default {
     ...mapMutations(['changeMobileSideNav', 'toggleSettingsModal']),
     openSettingsModal(stats) {
       this.toggleSettingsModal()
-      this.changeMobileSideNav(false)
+      this.changeMobileSideNav(stats)
+    },
+    clickedALink(e) {
+      //e.preventDefault()
+      e.stopPropagation()
+      console.log(e, 'the link was clicjed')
+      //changeMobileSideNav(false)
     },
   },
 }
