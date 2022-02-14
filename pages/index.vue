@@ -49,8 +49,10 @@ export default vue.extend({
   methods: {},
 
   mounted() {
+    this.$store.commit('changeMobileSideNav', false)
+  },
+  created() {
     this.$store.commit('checkLightState')
-    console.log(this.$route.name)
   },
 })
 </script>

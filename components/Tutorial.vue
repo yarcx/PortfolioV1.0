@@ -1,39 +1,8 @@
 <!-- Please remove this file from your project -->
 <template>
   <main class="md:w-[55%] relative w-full overflow-hidden">
-    <header 
-      class="w-full border-[color:var(--lightThemBorderColor)] border-b md:border-0 border-solid dark:border-[color:var(--darkThemeBorderColor)] flex bg-[color:var(--darkThemeTextColor)] dark:bg-[color:var(--lightThemeTextColor)] md:h-12"
-    >
-      <nav class="flex-1 p-2">
-        <div class="flex items-center justify-between px-2 ">
-          <div class="flex items-center justify-start">
-          <div @click="openMobileNav" class="mr-5 profileImg md:hidden transition rounded-full  hover:bg-gray-100 dark:hover:bg-gray-600" >
-            <img src="../static/mobileNavImage.jpg" alt="mobile Nav opener icon" class="h-7 w-7 rounded-full object-contain" />
-          </div>
-          <NuxtLink to="/">
-            <h1
-              class="text-[color:var(--lightThemeTextColor)] dark:text-[color:var(--darkThemeTextColor)] text-[20px]"
-            >
-              Home
-            </h1></NuxtLink
-          >
-          </div>
-          <div
-            class="p-1 transition rounded-full w-min h-min hover:bg-gray-100 dark:hover:bg-gray-600"
-          >
-            <component
-              @click="
-                {
-                  toggleLightMode()
-                }
-              "
-              class="text-[color:var(--lightThemeTextColor)] dark:text-[color:var(--darkThemeTextColor)] cursor-pointer"
-              :is="theThemeLight"
-            ></component>
-          </div>
-        </div>
-      </nav>
-    </header>
+    <!-- Mid section Header navigation goes below -->
+    <MidSectionHeader headerTitle="Home" />
     <!-- The header banner starts here -->
     <div class="flex">
       <div
@@ -114,7 +83,7 @@
         </div>
 
         <div
-          class="mt-2 border-t pt-2 pb-1 h-[full] border-b border-[color:var(--lightThemBorderColor)] dark:border-[color:var(--darkThemeBorderColor)]"
+          class="mt-2 overflow-y-scroll max-h-[290px]  border-t pt-2 pb-1 h-[full] border-b border-[color:var(--lightThemBorderColor)] dark:border-[color:var(--darkThemeBorderColor)]"
         >
           <div class="w-[96%] mx-auto flex justify-between items-start">
             <div
@@ -145,7 +114,7 @@
                 laborum, unde ratione quo tempora ex accusamus laboriosam
                 voluptatum numquam ipsum perspiciatis quod sit natus mollitia
                 laudantium iusto itaque deserunt quidem totam quibusdam corporis
-                provident! Quos, quam.
+                provident! Quos, quam. se
               </p>
             </div>
           </div>
@@ -162,7 +131,7 @@
     </div>
     <!-- The footer section that shows on mobile screen -->
     <footer
-      class="absolute h-16 px-6 w-full flex justify-between items-center md:hidden border-t border-[color:var(--lightThemBorderColor)] text-[color:var(--lightThemeTextColor)] dark:text-[color:var(--darkThemeTextColor)] dark:border-[color:var(--darkThemeBorderColor)] bottom-0"
+      class="absolute bg-[color:var(--darkThemeTextColor)] dark:bg-[color:var(--lightThemeTextColor)]  h-16 px-6 w-full flex justify-between items-center md:hidden border-t border-[color:var(--lightThemBorderColor)] text-[color:var(--lightThemeTextColor)] dark:text-[color:var(--darkThemeTextColor)] dark:border-[color:var(--darkThemeBorderColor)] bottom-0"
     >
       <div>
         <Home />
@@ -196,6 +165,7 @@ import AccountOutline from 'vue-material-design-icons/AccountOutline.vue'
 import LanConnect from 'vue-material-design-icons/LanConnect.vue'
 import EmailOutline from 'vue-material-design-icons/EmailOutline.vue'
 import MobileNav from './MobileNav/MobileNav.vue'
+import MidSectionHeader from './Header/MidSectionHeader.vue'
 
 import { mapGetters, mapMutations } from 'vuex'
 export default {
@@ -255,7 +225,7 @@ export default {
       return this.blogs
     },
   },
-  components: {
+  components: {MidSectionHeader,
     EmailOutline,
     LanConnect,
     AccountOutline,
