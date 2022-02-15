@@ -20,7 +20,7 @@
         </svg>
         <input
           type="search"
-          class="w-full h-full text-black bg-transparent border-0 outline-none dark:text-white"
+          class="w-full h-full text-black bg-transparent border-0 outline-none placeholder:text-light dark:text-white"
           placeholder="Search recent reads"
           data-searchInput
           v-model="searchBlogTitle"

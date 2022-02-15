@@ -41,7 +41,7 @@
             </div>
           </div>
 
-          <NuxtLink to=/contactMe>
+          <NuxtLink class="-mt-10 md:mt-0" to=/contactMe>
           <button
             class="hover:bg-gray-100 dark:hover:bg-gray-900 transition h-8 border-[color:var(--lightThemBorderColor)] border border-solid dark:border-[color:var(--darkThemeBorderColor)] rounded-2xl px-4"
           >
@@ -60,10 +60,10 @@
           >
             <a
               v-for="(contactDetails, i) in contactContent"
-              :key="contactDetails[i + 1]"
+              :key="i + 1"
               :href="contactDetails.link"
-              target="_"
-              class="text-sm cursor-pointer text-[color:var(--smallLinksLightColor)] flex justify-between items-center dark:text-[color:var(--smallLinksDarkColor)]"
+              target="_blank"
+              class="text-sm cursor-pointer text-[color:var(--smallLinksLightColor)] flex justify-between items-center dark:hover:text-[white] dark:text-[color:var(--smallLinksDarkColor)]"
             >
               <components :is="contactDetails.icon" class="pr-1"></components>
               {{ contactDetails.text }}
@@ -83,44 +83,46 @@
         </div>
 
         <div
-          class="mt-2 overflow-y-scroll max-h-[290px]  border-t pt-2 pb-1 h-[full] border-b border-[color:var(--lightThemBorderColor)] dark:border-[color:var(--darkThemeBorderColor)]"
+          class="mt-2 overflow-y-auto xs:max-h-[290px]  border-t pt-2 pb-1 h-[full] border-b border-[color:var(--lightThemBorderColor)] dark:border-[color:var(--darkThemeBorderColor)]"
         >
           <div class="w-[96%] mx-auto flex justify-between items-start">
             <div
               class="flex flex-col justify-center items-end w-[14%] md:w-[10%]"
             >
               <PinOutline
-                class="text-[10px] cursor-pointer dark:text-[color:var(--smallLinksDarkColor)] text-[color:var(--smallLinksLightColor)]"
+                class="text-[8px] cursor-pointer dark:text-[color:var(--smallLinksDarkColor)] text-[color:var(--smallLinksLightColor)]"
               />
               <img
-                class="mt-2 rounded-full h-14 w-14"
+                class="w-12 h-12 mt-2 rounded-full"
                 src="../static/smallProfilePics.jpg"
                 alt="about me photo"
               />
             </div>
             <div class="md:w-[90%] w-[86%] pl-2">
               <h3
-                class="text-[1rem] font-bold dark:text-[color:var(--smallLinksDarkColor)] text-[color:var(--smallLinksLightColor)]"
+                class="text-[1rem] font-[semibold] dark:text-[color:var(--smallLinksDarkColor)] text-[color:var(--smallLinksLightColor)]"
               >
-                About Me
+              About Me
               </h3>
               <p
-                class="font-light text-[color:var(--lightThemeTextColor)] dark:text-[color:var(--darkThemeTextColor)]"
+                class="font-light text-[14px] md:text-[16px] text-[color:var(--lightThemeTextColor)] dark:text-[color:var(--darkThemeTextColor)]"
               >
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Exercitationem blanditiis eum, laborum molestias, dolores quo
-                veniam ut perferendis rerum minima quas sequi quos incidunt,
-                atque tempora asperiores culpa autem voluptas? Fuga beatae velit
-                laborum, unde ratione quo tempora ex accusamus laboriosam
-                voluptatum numquam ipsum perspiciatis quod sit natus mollitia
-                laudantium iusto itaque deserunt quidem totam quibusdam corporis
-                provident! Quos, quam. se
+                Hello there! I'm <span class="px-2 py-1 font-medium bg-gray-300 rounded-md cursor-pointer dark:bg-gray-900">Hassan Yaqub</span>.  A 
+                <span class="px-2 py-1 font-medium bg-gray-300 rounded-md cursor-pointer dark:bg-gray-900">Software Engineer</span>  &amp;  <span class="px-2 py-1 font-medium bg-gray-300 rounded-md cursor-pointer dark:bg-gray-900">Technical Writer</span> 
+                Based In Abuja | Minna, Nigeria. I'm experienced in building pixel-perfect frontend application and server side applications.
+                I'm passionate about sharing my experience in my career,
+                and also some technologies/concept that i believe can help someone out there.
+                When i'm not working or learning something new, then i must be Working out in the  
+                <span class="px-2 py-1 font-medium bg-gray-300 rounded-md cursor-pointer dark:bg-gray-900">Gym</span>, or playing Video
+                 <span class="px-2 py-1 font-medium bg-gray-300 rounded-md cursor-pointer dark:bg-gray-900">Games</span>, or 
+                 <span class="px-2 py-1 font-medium bg-gray-300 rounded-md cursor-pointer dark:bg-gray-900">Watching</span> 
+                 Anime or any movie with a Superhero in it. &#128526;   
               </p>
             </div>
           </div>
         </div>
         <div
-          class="h-auto min-h-[50px] font-light text-sm hidden md:flex justify-end items-center px-4 text-[color:var(--lightThemeTextColor)] dark:text-[color:var(--darkThemeTextColor)]"
+          class="h-auto min-h-[40px]  font-light text-sm hidden md:flex justify-end items-center px-4 text-[color:var(--lightThemeTextColor)] dark:text-[color:var(--darkThemeTextColor)]"
         >
           <NuxtLink to="/guestbook" class="cursor-pointer hover:underline"
             >Check out Guest Book</NuxtLink

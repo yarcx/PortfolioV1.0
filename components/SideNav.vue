@@ -20,14 +20,16 @@
               v-for="(sideNav, index) in getSideNavLinks"
               :key="index"
               class="flex text-[color:var(--lightThemeTextColor)] dark:text-[color:var(--darkThemeTextColor)] items-center justify-start transition cursor-pointer group"
-              :class="[$route.name === sideNav.name && 'font-bold']"
+              :class="[
+                $route.name === sideNav.name ? 'font-bold' : 'font-[300]',
+              ]"
             >
               <NuxtLink
                 :to="sideNav.link"
                 class="flex items-center justify-start p-3 group-hover:rounded-full group-hover:bg-gray-100 dark:group-hover:bg-gray-900 w-max font"
               >
                 <component class="" :is="sideNav.icon"></component>
-                <span class="mx-3 hidden sm:flex font-[200] text-[20px]">{{
+                <span class="mx-3 hidden sm:flex text-[20px]">{{
                   sideNav.text
                 }}</span>
               </NuxtLink>
@@ -73,13 +75,8 @@ import MenuIcon from 'vue-material-design-icons/Menu.vue'
 import Home from 'vue-material-design-icons/HomeLightBulbOutline.vue'
 import Pound from 'vue-material-design-icons/Pound.vue'
 import BellOutline from 'vue-material-design-icons/BellOutline.vue'
-import EmailOutline from 'vue-material-design-icons/EmailOutline.vue'
-import ClipboardListOutline from 'vue-material-design-icons/ClipboardListOutline.vue'
-import AccountOutline from 'vue-material-design-icons/AccountOutline.vue'
-import LanConnect from 'vue-material-design-icons/LanConnect.vue'
-import BookAccountOutline from 'vue-material-design-icons/BookAccountOutline.vue'
 import { mapGetters, mapMutations } from 'vuex'
-import store from '../store/index'
+import { store } from '../store/index'
 export default {
   name: 'SideNav',
   store,
