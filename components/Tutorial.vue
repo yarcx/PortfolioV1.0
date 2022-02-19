@@ -104,18 +104,19 @@
               >
               About Me
               </h3>
+              <!-- Make the hover color dynamic from the hover color on the data -->
               <p
                 class="font-light text-[14px] md:text-[16px] text-[color:var(--lightThemeTextColor)] dark:text-[color:var(--darkThemeTextColor)]"
               >
-                Hello there! I'm <span class="px-2 py-1 font-medium bg-gray-300 rounded-md cursor-pointer dark:bg-gray-900">Hassan Yaqub</span>.  A 
-                <span class="px-2 py-1 font-medium bg-gray-300 rounded-md cursor-pointer dark:bg-gray-900">Software Engineer</span>  &amp;  <span class="px-2 py-1 font-medium bg-gray-300 rounded-md cursor-pointer dark:bg-gray-900">Technical Writer</span> 
+                Hello there! I'm <span   class="px-2  py-1 font-medium bg-gray-300 rounded-md cursor-pointer dark:bg-gray-900">Hassan Yaqub</span>.  A 
+                <span class="px-2 hover:bg-blue-700 py-1 font-medium bg-gray-300 rounded-md cursor-pointer dark:bg-gray-900">Software Engineer</span>  &amp;  <span class="px-2 hover:bg-blue-700 py-1 font-medium bg-gray-300 rounded-md cursor-pointer dark:bg-gray-900">Technical Writer</span> 
                 Based In Abuja | Minna, Nigeria. I'm experienced in building pixel-perfect frontend application and server side applications.
                 I'm passionate about sharing my experience in my career,
                 and also some technologies/concept that i believe can help someone out there.
                 When i'm not working or learning something new, then i must be Working out in the  
-                <span class="px-2 py-1 font-medium bg-gray-300 rounded-md cursor-pointer dark:bg-gray-900">Gym</span>, or playing Video
-                 <span class="px-2 py-1 font-medium bg-gray-300 rounded-md cursor-pointer dark:bg-gray-900">Games</span>, or 
-                 <span class="px-2 py-1 font-medium bg-gray-300 rounded-md cursor-pointer dark:bg-gray-900">Watching</span> 
+                <span class="px-2 hover:bg-blue-700 py-1 font-medium bg-gray-300 rounded-md cursor-pointer dark:bg-gray-900">Gym</span>, or playing Video
+                 <span class="px-2 hover:bg-blue-700 py-1 font-medium bg-gray-300 rounded-md cursor-pointer dark:bg-gray-900">Games</span>, or 
+                 <span class="px-2 hover:bg-blue-700 py-1 font-medium bg-gray-300 rounded-md cursor-pointer dark:bg-gray-900">Watching</span> 
                  Anime or any movie with a Superhero in it. &#128526;   
               </p>
             </div>
@@ -174,6 +175,7 @@ export default {
   name: 'NuxtTutorial',
   data() {
     return {
+      hoverColor: 'red',
       ligthOrDarkTheme: null,
       date: new Date(),
       contactContent: [

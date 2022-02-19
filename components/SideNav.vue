@@ -29,7 +29,7 @@
                 class="flex items-center justify-start p-3 group-hover:rounded-full group-hover:bg-gray-100 dark:group-hover:bg-gray-900 w-max font"
               >
                 <component class="" :is="sideNav.icon"></component>
-                <span class="mx-3 hidden sm:flex text-[20px]">{{
+                <span class="mx-3 hidden md:flex text-[20px]">{{
                   sideNav.text
                 }}</span>
               </NuxtLink>
