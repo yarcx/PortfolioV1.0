@@ -15,6 +15,7 @@ import BookAccountOutline from 'vue-material-design-icons/BookAccountOutline.vue
 export const store = new vuex.Store({
   state: {
     count: 0,
+    ligthState: 'light',
     toggled: false,
     openSettingsModal: false,
     mobileSideNav: false,
@@ -69,6 +70,9 @@ export const store = new vuex.Store({
     getSettingsModal: (state) => {
       return state.openSettingsModal
     },
+    getLightState: (state) => {
+      return state.ligthState
+    },
   },
   mutations: {
     changeMobileSideNav(state, payload) {
@@ -91,22 +95,25 @@ export const store = new vuex.Store({
           localStorage.removeItem('theme')
           state.toggled = false
         }
-      } else {
-        state.toggled = !state.toggled
-        document.documentElement.classList.remove(
-          document.documentElement.classList[0]
-        )
-        document.documentElement.classList.toggle(ligthMode)
-        if (document.documentElement.classList.length) {
-          localStorage.setItem('theme', ligthMode)
-          state.toggled = true
-        }
+      }
+      if (ligthMode == 'dark') {
+        state.ligthState = ligthMode
+        document.documentElement.classList.add('dark')
+        localStorage.setItem('theme', 'dark')
+        state.toggled = true
+      }
+      if (ligthMode === 'light') {
+        state.ligthState = ligthMode
+        document.documentElement.classList.remove('dark')
+        localStorage.removeItem('theme')
+        state.toggled = false
       }
     },
     checkLightState(state) {
       if (window.localStorage.getItem('theme')) {
         document.documentElement.classList.add('dark')
         state.toggled = true
+        state.ligthState = 'dark'
       }
     },
     toggleSettingsModal(state, status) {

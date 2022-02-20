@@ -101,7 +101,7 @@
           <div
             @click.stop="
               {
-                toggleLightMode()
+                changeLightState('light')
               }
             "
             class="w-[100%] md:w-[8rem] my-1 md:my-0 flex justify-around items-center text-black p-3 bg-white rounded-md"
@@ -109,29 +109,47 @@
             <div
               class="w-[20%] active:ring-1 h-full flex justify-center items-center"
             >
-              <input type="radio" />
+              <input type="radio" :checked="this.getLightState === 'light'" />
             </div>
             <div class="w-[80%] h-full flex justify-center items-center">
               <span>Default</span>
             </div>
           </div>
-
           <div
             @click.stop="
               {
-                toggleLightMode('dark')
+                changeLightState('dark')
+              }
+            "
+            class="w-[100%] md:w-[8rem] my-1 md:my-0 flex justify-around items-center text-white p-3 bg-[color:var(--lightThemeTextColor)] rounded-md"
+          >
+            <div
+              class="w-[20%] active:ring-1 h-full flex justify-center items-center"
+            >
+              <input type="radio" :checked="this.getLightState === 'dark'" />
+            </div>
+            <div class="w-[80%] h-full flex justify-center items-center">
+              <span>Light Out</span>
+            </div>
+          </div>
+
+          <!-- <div
+            @click.stop="
+              {
+                changeLightState('dark')
               }
             "
             class="w-[100%] md:w-[8rem] my-1 md:my-0 flex text-white justify-around items-center p-3 bg-[color:var(--lightThemeTextColor)] rounded-md"
           >
-            <div class="w-[20%] h-full flex justify-center items-center">
-              <input type="radio" />
+            <div class="w-[20%] h-full  active:ring-1  flex justify-center items-center">
+              <input type="radio" :checked="this.getLightState === 'dark'" />
             </div>
             <div class="w-[80%] h-full flex justify-center items-center">
               <span>Lights Out</span>
             </div>
-          </div>
+          </div> -->
         </div>
+
         <div class="flex items-center justify-center mt-6">
           <button
             @click.stop="
@@ -156,9 +174,11 @@ export default {
   data() {
     return {}
   },
-  mounted() {},
+  mounted() {
+    console.log(this.getLightState == 'dark', 'check you see')
+  },
   computed: {
-    ...mapGetters(['getSettingsModal']),
+    ...mapGetters(['getSettingsModal', 'getLightState']),
   },
   methods: {
     ...mapMutations([
@@ -166,6 +186,10 @@ export default {
       'toggleLightMode',
       'changeMobileSideNav',
     ]),
+    changeLightState(state) {
+      this.toggleLightMode(state)
+      console.log(this.getLightState)
+    },
   },
 }
 </script>
