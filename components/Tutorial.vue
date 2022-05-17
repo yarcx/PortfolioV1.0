@@ -108,15 +108,15 @@
               <p
                 class="font-light text-[14px] md:text-[16px] text-[color:var(--lightThemeTextColor)] dark:text-[color:var(--darkThemeTextColor)]"
               >
-                Hello there! I'm <span   class="px-2  py-1 font-medium bg-gray-300 rounded-md cursor-pointer dark:bg-gray-900">Hassan Yaqub</span>.  A 
-                <span class="px-2 hover:bg-blue-700 py-1 font-medium bg-gray-300 rounded-md cursor-pointer dark:bg-gray-900">Software Engineer</span>  &amp;  <span class="px-2 hover:bg-blue-700 py-1 font-medium bg-gray-300 rounded-md cursor-pointer dark:bg-gray-900">Technical Writer</span> 
+                Hello there! I'm <span :class="`hover:bg-[#da18b9]`"   class="px-2 py-1 font-medium bg-gray-300 rounded-md cursor-pointer dark:bg-gray-900">Hassan Yaqub</span>.  A 
+                <span  :class="getSmallBoxHoverColor" class="px-2 py-1 font-medium bg-gray-300 rounded-md cursor-pointer dark:bg-gray-900">Software Engineer</span>  &amp;  <span  :class="getSmallBoxHoverColor" class="px-2 py-1 font-medium bg-gray-300 rounded-md cursor-pointer dark:bg-gray-900">Technical Writer</span> 
                 Based In Abuja | Minna, Nigeria. I'm experienced in building pixel-perfect frontend application and server side applications.
                 I'm passionate about sharing my experience in my career,
                 and also some technologies/concept that i believe can help someone out there.
                 When i'm not working or learning something new, then i must be Working out in the  
-                <span class="px-2 hover:bg-blue-700 py-1 font-medium bg-gray-300 rounded-md cursor-pointer dark:bg-gray-900">Gym</span>, or playing Video
-                 <span class="px-2 hover:bg-blue-700 py-1 font-medium bg-gray-300 rounded-md cursor-pointer dark:bg-gray-900">Games</span>, or 
-                 <span class="px-2 hover:bg-blue-700 py-1 font-medium bg-gray-300 rounded-md cursor-pointer dark:bg-gray-900">Watching</span> 
+                <span  :class="getSmallBoxHoverColor" class="px-2 py-1 font-medium bg-gray-300 rounded-md cursor-pointer dark:bg-gray-900">Gym</span>, or playing Video
+                 <span  :class="getSmallBoxHoverColor" class="px-2 py-1 font-medium bg-gray-300 rounded-md cursor-pointer dark:bg-gray-900">Games</span>, or 
+                 <span  :class="getSmallBoxHoverColor" class="px-2 py-1 font-medium bg-gray-300 rounded-md cursor-pointer dark:bg-gray-900">Watching</span> 
                  Anime or any movie with a Superhero in it. &#128526;   
               </p>
             </div>
@@ -136,14 +136,14 @@
     <footer
       class="absolute bg-[color:var(--darkThemeTextColor)] dark:bg-[color:var(--lightThemeTextColor)]  h-16 px-6 w-full flex justify-between items-center md:hidden border-t border-[color:var(--lightThemBorderColor)] text-[color:var(--lightThemeTextColor)] dark:text-[color:var(--darkThemeTextColor)] dark:border-[color:var(--darkThemeBorderColor)] bottom-0"
     >
-      <div>
+      <NuxtLink to="/">
         <Home />
-      </div>
-      <div>
+      </NuxtLink>
+      <NuxtLink to="/resume">
         <AccountOutline />
-      </div>
-      <div><LanConnect /></div>
-      <div><EmailOutline /></div>
+      </NuxtLink>
+      <NuxtLink to="/projects"><LanConnect /></NuxtLink>
+      <NuxtLink to="/contactMe"><EmailOutline /></NuxtLink>
     </footer>
     <MobileNav />
   </main>
@@ -175,7 +175,7 @@ export default {
   name: 'NuxtTutorial',
   data() {
     return {
-      hoverColor: 'red',
+      hoverColor: 'hover:bg-red-500',
       ligthOrDarkTheme: null,
       date: new Date(),
       contactContent: [
@@ -254,8 +254,12 @@ export default {
     ...mapGetters([
       'count',
       'toggled',
+      'getSmallBoxHoverColor'
       // ...
     ]),
+    hoverStyle: function(){
+      return this.hoverColor
+    },
     theThemeLight() {
       return this.toggled ? 'ThemeLightDark' : 'WeatherNight'
     },

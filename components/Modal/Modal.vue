@@ -132,22 +132,6 @@
               <span>Light Out</span>
             </div>
           </div>
-
-          <!-- <div
-            @click.stop="
-              {
-                changeLightState('dark')
-              }
-            "
-            class="w-[100%] md:w-[8rem] my-1 md:my-0 flex text-white justify-around items-center p-3 bg-[color:var(--lightThemeTextColor)] rounded-md"
-          >
-            <div class="w-[20%] h-full  active:ring-1  flex justify-center items-center">
-              <input type="radio" :checked="this.getLightState === 'dark'" />
-            </div>
-            <div class="w-[80%] h-full flex justify-center items-center">
-              <span>Lights Out</span>
-            </div>
-          </div> -->
         </div>
 
         <div class="flex items-center justify-center mt-6">

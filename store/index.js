@@ -19,6 +19,7 @@ export const store = new vuex.Store({
     toggled: false,
     openSettingsModal: false,
     mobileSideNav: false,
+    smallBoxHoverColor: `hover:bg-[red]`,
     sideNavLinks: [
       {
         text: 'Home',
@@ -59,6 +60,7 @@ export const store = new vuex.Store({
     ],
   },
   getters: {
+    getSmallBoxHoverColor: (state) => state.smallBoxHoverColor,
     getSideNavLinks: (state) => state.sideNavLinks,
     getMobileSideNav: (state) => state.mobileSideNav,
     getCount: (state) => {
@@ -75,6 +77,9 @@ export const store = new vuex.Store({
     },
   },
   mutations: {
+    changeSmallBoxHoverColor(state, payload) {
+      state.getSmallBoxHoverCOlor = payload
+    },
     changeMobileSideNav(state, payload) {
       if (payload != undefined) {
         return (state.mobileSideNav = payload)
